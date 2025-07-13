@@ -24,7 +24,7 @@ export function ModernHeader() {
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <Link href="/home" className="flex items-center">
-              <Image src="/images/armor-logo.png" alt="Armor Logo" width={80} height={26} className="h-6 w-auto" />
+              <Image src="/images/armor-logo.png" alt="Armor Logo" width={32} height={12} className="h-3 w-auto" />
             </Link>
 
             {/* Search Bar - Hidden on mobile */}

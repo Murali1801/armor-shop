@@ -109,9 +109,9 @@ export default function ProductsPage() {
                   </ul>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="flex-1 bg-black hover:bg-gray-800 text-white">
-                    <ShoppingCart className="mr-2 h-5 w-5" />
+                <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                  <Button size="lg" className="flex-1 bg-black hover:bg-gray-800 text-white h-30 text-2xl font-bold py-4">
+                    <ShoppingCart className="mr-3 h-8 w-8" />
                     BUY NOW
                   </Button>
                   {!isLoggedIn && (
@@ -119,9 +119,9 @@ export default function ProductsPage() {
                       variant="outline"
                       size="lg"
                       onClick={() => setIsAuthModalOpen(true)}
-                      className="border-black text-black hover:bg-black hover:text-white"
+                      className="flex-1 border-black text-black hover:bg-black hover:text-white h-30 text-2xl font-bold py-4"
                     >
-                      <Wallet className="mr-2 h-5 w-5" />
+                      <Wallet className="mr-3 h-8 w-8" />
                       Earn Points
                     </Button>
                   )}
@@ -192,17 +192,17 @@ export default function ProductsPage() {
 
           <div className="max-w-4xl mx-auto">
             <Tabs defaultValue="audio" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 bg-white border border-gray-200">
-                <TabsTrigger value="audio" className="text-black">
+              <TabsList className="flex w-full overflow-x-auto no-scrollbar sm:grid sm:grid-cols-4 bg-white border border-gray-200 gap-1 p-1 whitespace-nowrap">
+                <TabsTrigger value="audio" className="text-black text-xs sm:text-sm px-4 py-2 min-w-[120px] flex-1">
                   Audio
                 </TabsTrigger>
-                <TabsTrigger value="design" className="text-black">
+                <TabsTrigger value="design" className="text-black text-xs sm:text-sm px-4 py-2 min-w-[120px] flex-1">
                   Design
                 </TabsTrigger>
-                <TabsTrigger value="connectivity" className="text-black">
+                <TabsTrigger value="connectivity" className="text-black text-xs sm:text-sm px-4 py-2 min-w-[120px] flex-1">
                   Connectivity
                 </TabsTrigger>
-                <TabsTrigger value="package" className="text-black">
+                <TabsTrigger value="package" className="text-black text-xs sm:text-sm px-4 py-2 min-w-[120px] flex-1">
                   Package
                 </TabsTrigger>
               </TabsList>

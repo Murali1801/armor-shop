@@ -1,25 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight, Play } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const carouselItems = [
-  { type: "image", src: "/images/hero-banner.png", alt: "Armor Version H1 - Main Product" },
   { type: "image", src: "/images/cloud-cushion.jpg", alt: "Cloud Cushion Comfort" },
   { type: "image", src: "/images/rgb-lights.jpg", alt: "RGB Lighting Effects" },
   { type: "image", src: "/images/audio-immersion.jpg", alt: "7.1 Surround Sound" },
   { type: "image", src: "/images/beyond-ordinary.jpg", alt: "Beyond The Ordinary" },
   { type: "image", src: "/images/packaging.jpg", alt: "Complete Package" },
   { type: "image", src: "/images/features.png", alt: "Key Features" },
-  { type: "image", src: "/placeholder.svg?height=600&width=800", alt: "Mythpat Gaming Setup" },
-  { type: "image", src: "/placeholder.svg?height=600&width=800", alt: "Urmila Review" },
-  { type: "image", src: "/placeholder.svg?height=600&width=800", alt: "Professional Gaming" },
   {
     type: "video",
     src: "https://assets.replocdn.com/projects/199319aa-f908-4d9e-95bb-f0464fa8cf57/00258507-5d09-4925-8956-1cc3d6c2b947", // Updated 3D video URL
-    thumbnail: "/placeholder.svg?height=600&width=800", // Placeholder thumbnail
+    thumbnail: "/images/hero-banner.png", // Use hero banner as video thumbnail
     alt: "3D Product Showcase Video",
   },
 ]
@@ -37,6 +33,14 @@ export function ProductCarousel() {
 
   const currentItem = carouselItems[currentIndex]
 
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide()
+    }, 7000)
+    return () => clearInterval(interval)
+  }, [currentIndex])
+
   return (
     <div className="relative w-full max-w-4xl mx-auto">
       <div className="relative aspect-video bg-gray-100 rounded-lg overflow-hidden">
@@ -45,11 +49,16 @@ export function ProductCarousel() {
         ) : (
           <video
             key={currentItem.src} // Key ensures video reloads when source changes
-            controls
-            preload="metadata"
-            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            controls={false}
+            preload="auto"
+            className="w-full h-full object-cover select-none pointer-events-none"
             poster={currentItem.thumbnail || "/placeholder.svg"} // Use thumbnail as poster
             aria-label={currentItem.alt}
+            onContextMenu={e => e.preventDefault()}
           >
             <source src={currentItem.src} type="video/mp4" />
             Your browser does not support the video tag.
